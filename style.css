@@ -1,0 +1,27 @@
+body {
+  background-color: #22252B;
+  color: #f2f2f2;
+}
+
+#quiz-form {
+
+  text-align: center;
+   justify-content: center;
+}
+
+#center{
+    text-align: center;
+}
+
+.center-vertically {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+#results{
+  text-align: center;
+}
+
