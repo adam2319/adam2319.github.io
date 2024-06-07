@@ -25,3 +25,12 @@ body {
   text-align: center;
 }
 
+.img-desktop {
+    width: 600px; /* Set the width for desktop */
+}
+
+/* Use a media query to override the width on smaller screens */
+@media (max-width: 767px) {
+    .img-desktop {
+        width: 100%; /* Reset width for mobile devices */
+    }

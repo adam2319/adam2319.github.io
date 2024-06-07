@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz</title>
+    <!-- Add Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+      <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="#">Cyber Security Awareness</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <div class="container mt-5">
+        <h1 class="text-center">Phishing Test</h1>
+
+        <form id="quiz-form">
+            <img src="konvokacio.jpg" alt="Image Description" class="mt-3 img-fluid img-desktop" style="width: 600px; ">
+                <div class="form-group">
+                    <br>
+                <label for="q1">1. Válassza ki a gyanús elemeket!</label>
+                <br>
+                <img src="konvokacio1.jpg" alt="Image Description" class="mt-3 img-fluid img-desktop" style="width: 600px; ">
+                <br>
+                <input type="checkbox" id="q1a" name="q1a" value="a"> a) E-mail cím<br>
+                <input type="checkbox" id="q1b" name="q1b" value="b"> b) Rendőrségi címer<br>
+                <input type="checkbox" id="q1c" name="q1c" value="c"> c) Cyberbűnhatóság<br>
+                <input type="checkbox" id="q1d" name="q1d" value="d"> d) Interpol címer<br>
+            </div>
+
+            <div class="form-group">
+                <label for="q2">2. Válassza ki a gyanús elemeket!</label><br>
+                 <img src="konvokacio2.jpg" alt="Image Description" class="mt-3 img-fluid img-desktop" style="width: 600px; ">
+                <br>
+                <input type="checkbox" id="q2a" name="q2a" value="a"> a) CYBERPORNOGRÁFIA<br>
+                <input type="checkbox" id="q2b" name="q2b" value="b"> b) PEDOPHILIA<br>
+                <input type="checkbox" id="q2c" name="q2c" value="c"> c) JÜRGEN STOCK úr, az Interpol rendőrségi főtitkára<br>
+                <input type="checkbox" id="q2d" name="q2d" value="d"> d) jogi lépéseket teszünk<br>
+            </div>
+
+            <div class="form-group">
+                <label for="q3">3. Válassza ki a gyanús elemeket!</label><br>
+                <img src="konvokacio3.jpg" alt="Image Description" class="mt-3 img-fluid img-desktop" style="width: 600px; ">
+                <br>
+                <input type="checkbox" id="q3a" name="q3a" value="a"> a) büntetőeljárási törvénykönyv 2007.<br>
+                <input type="checkbox" id="q3b" name="q3b" value="b"> b) bizonyítákul szolgálnak<br>
+                <input type="checkbox" id="q3c" name="q3c" value="c"> c) Tájékozazásul közöljük<br>
+                <input type="checkbox" id="q3d" name="q3d" value="d"> d) kiberrendőrünk<br>
+            </div>
+
+            <div class="form-group">
+                <label for="q4">4. Válassza ki a gyanús elemeket!</label><br>
+                <img src="konvokacio4.jpg" alt="Image Description" class="mt-3 img-fluid img-desktop" style="width: 600px; ">
+                <br>
+                <input type="checkbox" id="q4a" name="q4a" value="a"> a) OIPC.S@AOL.COM<br>
+                <input type="checkbox" id="q4b" name="q4b" value="b"> b) BŰNÜGYI NYOMOZÓ OSZTÁLY<br>
+                <input type="checkbox" id="q4c" name="q4c" value="c"> c) lakóhelyhez legközelebbi POLICE-nak<br>
+                <input type="checkbox" id="q4d" name="q4d" value="d"> d) Ha nem teszed<br>
+            </div>
+
+            <button type="button" class="btn btn-secondary" id="check-answers-btn" onclick="checkAnswers()">Eredmények Megtekintése</button>
+        </form>
+
+  
+
+        <div id="results" class="mt-3"></div>
+    </div>
+
+    <!-- Add Bootstrap JS and jQuery (optional) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+        function checkAnswers() {
+            const answers = {
+                q1a: true, 
+                q1c: true, 
+                q2a: true, 
+                q2c: true, 
+                q3a: true, 
+                q3d: true, 
+                q4a: true, 
+                q4c: true, 
+                q4d: true,
+            };
+
+            const form = document.getElementById("quiz-form");
+            const resultsDiv = document.getElementById("results");
+            let score = 0;
+
+            for (const questionId in answers) {
+                const selectedOption = form.elements[questionId];
+                if (selectedOption && selectedOption.checked === answers[questionId]) {
+                    score++;
+                }
+            }
+
+            resultsDiv.innerHTML = `Elért Pontszáma: ${score} /  ${Object.keys(answers).length}.`;
+        }
+    </script>
+</body>
+</html>
